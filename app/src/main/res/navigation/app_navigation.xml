@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="glnix.testjob.imagefinder.presentation.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_full_screen_fragment"
+            app:destination="@id/full_screen_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/full_screen_fragment"
+        android:name="glnix.testjob.imagefinder.presentation.full.FullFragment">
+        <argument
+            android:name="searchItem"
+            app:argType="glnix.testjob.imagefinder.domain.model.ImageSearchResultDomain" />
+        <action
+            android:id="@+id/action_to_web"
+            app:destination="@id/show_in_web">
+            <argument
+                android:name="url"
+                app:argType="string"
+                app:nullable="false" />
+        </action>
+
+        <action
+            android:id="@+id/action_to_webview"
+            app:destination="@id/webview_fragment" />
+    </fragment>
+
+    <chrome
+        android:id="@+id/show_in_web"
+        android:name="glnix.testjob.imagefinder.presentation.base.navigation.ChromeCustomTabsNavigator"
+        app:secondaryToolbarColor="@color/colorPrimaryDark"
+        app:toolbarColor="@color/colorPrimary" />
+
+    <fragment
+        android:id="@+id/webview_fragment"
+        android:name="glnix.testjob.imagefinder.presentation.webview.WebViewFragment">
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+</navigation>

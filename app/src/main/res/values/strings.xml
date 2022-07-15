@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ImageFinder</string>
+    <string name="text_toolbar_search_hint">Какую картинку ищем?</string>
+    <string name="default_error_text">Что то пошло не так, но мы уже работаем над этим</string>
+</resources>
